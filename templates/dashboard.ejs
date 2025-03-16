@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="../css/dashboard.css">
+</head>
+<body>
+  <div class="sidebar">
+    <a href="/positions/create">Create Position</a>
+    <a href="/organization/positions">Positions Listed</a>
+    <a href="/positions/all">Browse Positions</a>
+    <a href="/applications/applications">My Applications</a>
+    <a href="/logout" class="logout-button">Logout</a>
+  </div>
+
+  <div class="content">
+    <h1>Welcome to the Dashboard</h1>
+    <p>Your role: JobSeeker</p>
+
+    <p>Browse available positions or check your applications using the sidebar.</p>
+
+    <h2>Available Jobs</h2>
+
+    <div class="job-list">
+      <!-- Job 1 -->
+      <div class="job-card">
+        <h3>designer</h3>
+        <p><strong>Company:</strong> Tiya Corp</p>
+        <p><strong>Location:</strong> butwal</p>
+        <p><strong>Salary:</strong> 2000</p>
+        <p><strong>Description:</strong> experience in fashion field</p>
+        <a href="/positions/1" class="apply-button">View Details</a>
+      </div>
+
+      <!-- Job 2 -->
+      <div class="job-card">
+        <h3>Product Manager</h3>
+        <p><strong>Company:</strong> Innovate Inc</p>
+        <p><strong>Location:</strong> New York, NY</p>
+        <p><strong>Salary:</strong> $90k - $110k</p>
+        <p><strong>Description:</strong> Lead product development teams to success. You will be responsible for prioritizing features, managing backlogs, and collaborating with stakeholders.</p>
+        <a href="/positions/2" class="apply-button">View Details</a>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

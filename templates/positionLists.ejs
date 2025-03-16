@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="../css/positionLists.css">
+</head>
+<body>
+  <div class="sidebar">
+    <% if (role === 'Employer') { %>
+      <a href="/positions/create">Create Position</a>
+      <a href="/dashboard">Positions Listed</a>
+      <a href="/applications">Applications</a>
+    <% } else if (role === 'JobSeeker') { %>
+      <a href="/positions/all">Browse Positions</a>
+      <a href="positions/applications">My Applications</a>
+    <% } %>
+    <a href="/logout" class="logout-button">Logout</a>
+  </div>
+  <div class="content">
+    <h1>Welcome to the Dashboard</h1>
+    <p>Your role: <%= role %></p>
+    <h2>Positions Listed</h2>
+    <ul class="position-list">
+      <% positions.forEach(position => { %>
+        <li>
+          <h3><%= position.positionTitle %></h3>
+          <p><strong>Description:</strong> <%= position.positionDetails %></p>
+          <p><strong>Compensation:</strong> $<%= position.compensation %></p>
+          <p><strong>Location:</strong> <%= position.workLocation %></p>
+          <p><strong>Type:</strong> <%= position.employmentType %></p>
+          <p><strong>Posting Date:</strong> <%= position.postedAt.toDateString() %></p>
+          <% if (position.closesAt) { %>
+            <p><strong>Expiry Date:</strong> <%= position.closesAt.toDateString() %></p>
+          <% } %>
+          <% if (role === 'JobSeeker') { %>
+            <a href="/apply/<%= position.id %>" class="action-button apply">Apply</a>
+          <% } %>
+          <% if (role === 'Employer') { %>
+            <div class="btn-div">
+              <a href="/edit/<%= position.id %>" class="action-button edit">Edit</a>
+              <a href="/delete/<%= position.id %>" class="action-button delete">Delete</a>
+              <a href="/applications/position/<%= position.id %>" class="action-button apply">View Applications</a>
+            </div>
+          <% } %>
+        </li>
+      <% }) %>
+    </ul>
+  </div>
+</body>
+</html>

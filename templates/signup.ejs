@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register</title>
+  <link rel="stylesheet" href="/css/signup.css">
+</head>
+<body>
+
+  <div class="container">
+
+    <header>
+      <h1>Register as <%= role %></h1>
+    </header>
+
+    <form id="registrationForm" action="/api/account/register" method="post" enctype="multipart/form-data">
+    
+      <input type="hidden" id="role" name="role" value="<%= role %>">
+
+      <section class="user-info-section">
+        <div class="form-group">
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="fullName" required>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password:</label>
+          <input type="password" id="password" name="password" required>
+        </div>
+      </section>
+
+      <section class="document-upload-section">
+        <div class="form-group">
+          <label for="verificationDoc">Valid Document:</label>
+          <input type="file" id="verificationDoc" name="verificationDoc" >
+        </div>
+      </section>
+
+      <% if (role === 'Employer') { %>
+        <section class="employer-info-section">
+          <div class="form-group">
+            <label for="organizationName">Company Name:</label>
+            <input type="text" id="organizationName" name="organizationName" required>
+          </div>
+
+          <div class="form-group">
+            <label for="headquarters">Address:</label>
+            <input type="text" id="headquarters" name="headquarters" required>
+          </div>
+
+          <div class="form-group">
+            <label for="contactDetails">Contact Info:</label>
+            <input type="text" id="contactDetails" name="contactDetails" required>
+          </div>
+        </section>
+      <% } %>
+
+
+      <section class="submit-section">
+        <div class="form-group">
+          <button type="submit">Register</button>
+        </div>
+      </section>
+
+    </form>
+  </div>
+
+  <script>
+  
+    document.addEventListener('DOMContentLoaded', () => {
+      const roleFromStorage = localStorage.getItem('selectedRole');
+      if (roleFromStorage) {
+        document.getElementById('role').value = roleFromStorage;
+      }
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/roll.css">
+  <title>Choose</title>
+</head>
+<body>
+
+  <div class="container">
+    <h1>What would you want to be registered as?</h1>
+    
+
+    <div class="button-group">
+      <button class="role-button" data-role="Employer">Company</button>
+      <button class="role-button" data-role="JobSeeker">Job Seeker</button>
+    </div>
+  </div>
+
+  <script>
+    
+    document.querySelectorAll('.role-button').forEach(button => {
+      button.addEventListener('click', function() {
+        const role = this.getAttribute('data-role');
+        localStorage.setItem('selectedRole', role);
+        window.location.href = `${role.toLowerCase()}/register`;
+      });
+    });
+  </script>
+
+</body>
+</html>
